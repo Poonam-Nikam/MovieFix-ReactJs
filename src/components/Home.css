@@ -1,0 +1,20 @@
+/* Home.css */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 100px; /* Adjust to the height of the navbar */
+  }
+  
+  .year-section {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
