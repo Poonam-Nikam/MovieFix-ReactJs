@@ -18,7 +18,9 @@ Ensure you have Node.js and npm (Node Package Manager) installed on your machine
 
  2. Go To your Folder
 
-3. To Start on terminal use this command- npm start
+ 3. Run Command On Terminal - Npm Install
+
+4. To Start on terminal use this command - npm start
 
 ### Hierarchy Of Project:-
 src/
