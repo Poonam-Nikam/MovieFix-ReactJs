@@ -1,22 +1,41 @@
-import React from 'react'
-import "../components/Navbar.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Navbar.css'; // Import your CSS file for navbar styling
 
-const Navbar = () => {
+const Navbar = ({ onGenreSelect, onSearch }) => {
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get(
+          'https://api.themoviedb.org/3/genre/movie/list?api_key=2dca580c2a14b55200e784d157207b4d&language=en-US'
+        );
+        setGenres(response.data.genres);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchGenres();
+  }, []);
+
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        MovieFix
+    <div className="navbar">
+      <div className="navbar-content">
+        <div className="navbar-title">MOVIEFIX</div>
       </div>
-      <ul className="navbar-nav">
-      <li className="nav-item">All</li>
-      <li className="nav-item">Action</li>
-      <li className="nav-item">Comedy</li>
-      <li className="nav-item">Horror</li>
-      <li className="nav-item">Drama</li>
-      <li className="nav-item">Sci-Fi</li>
-      </ul>
-    </nav>
-  )
-}
+      <div className="menu-bar">
+        <ul className="menu-list">
+          {genres.map((genre) => (
+            <li key={genre.id} className="menu-item">
+              <button onClick={() => onGenreSelect(genre.id)}>{genre.name}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;
