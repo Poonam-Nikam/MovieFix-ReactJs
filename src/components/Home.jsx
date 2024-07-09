@@ -103,7 +103,7 @@ const Home = () => {
         .sort((a, b) => b - a)
         .map((yearKey) => (
           <div key={yearKey} className="year-section">
-            <h2>Movies from {yearKey}</h2>
+            <h2 style={{marginLeft:"100px"}}>Movies from {yearKey}</h2>
             <div className="movies-grid">
               {filteredMovies[yearKey].map((movie, index) => (
                 <Card
